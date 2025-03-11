@@ -62,10 +62,48 @@ export default function Home() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Dados enviados:", formData);
-  };
+
+    try {
+        const response = await fetch('/api/generate-card', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json(); // Tente obter detalhes em JSON
+            const errorMessage = errorData.message || response.statusText || 'Erro ao gerar carteirinha';
+            throw new Error(errorMessage);
+        }
+
+        // Obtenha o buffer diretamente (sem Blob)
+        const pdfBuffer = await response.arrayBuffer(); // Ou response.blob() se preferir
+
+        // Criar um Blob a partir do ArrayBuffer
+        const blob = new Blob([pdfBuffer], { type: 'application/pdf' });
+
+        // Criar URL do blob e fazer download
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'carteirinha-ciclista.pdf';
+        document.body.appendChild(a);
+        a.click();
+
+        // Limpar
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+
+    } catch (error) {
+        console.error('Erro:', error);
+        const errorMessage = error instanceof Error ? error.message : 'Erro desconhecido';
+        alert(`Erro ao gerar a carteirinha: ${errorMessage}`); // Exibe a mensagem de erro do servidor
+    }
+};
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md">
