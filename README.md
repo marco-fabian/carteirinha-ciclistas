@@ -1,36 +1,88 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Carteirinha de Ciclistas 🚲
 
-## Getting Started
+Sistema web para geração de carteirinhas digitais para ciclistas, desenvolvido com Next.js e TypeScript.
 
-First, run the development server:
+## 🚀 Funcionalidades
+
+- ✅ Cadastro de ciclistas com informações pessoais
+- ✅ Upload de foto de perfil
+- ✅ Geração de carteirinha em PDF com QR Code
+- ✅ Design responsivo com Tailwind CSS
+- ✅ Validações de formulário
+
+## 🛠️ Tecnologias Utilizadas
+
+- Next.js 14
+- TypeScript
+- Tailwind CSS
+- PDFKit
+- QR Code Generator
+
+## 📋 Pré-requisitos
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+node >= 18.17.0
+npm >= 9.6.7
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔧 Instalação e Uso
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Clone o repositório:
+```bash
+git clone https://github.com/seu-usuario/carteirinha-ciclistas.git
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. Instale as dependências:
+```bash
+cd carteirinha-ciclistas
+npm install
+```
 
-## Learn More
+3. Inicie o servidor de desenvolvimento:
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Acesse [http://localhost:3000](http://localhost:3000) no seu navegador.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📁 Estrutura do Projeto
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```plaintext
+carteirinha-ciclistas/
+├── src/
+│   ├── app/
+│   │   ├── api/
+│   │   │   └── generate-card/
+│   │   └── page.tsx
+│   ├── components/
+│   │   ├── FormField.tsx
+│   │   └── PhotoUpload.tsx
+│   ├── types/
+│   │   └── forms.ts
+│   └── utils/
+│       └── generateCard.ts
+├── public/
+├── tailwind.config.js
+└── package.json
+```
 
-## Deploy on Vercel
+## 💻 Como Usar
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Acesse a aplicação no navegador
+2. Preencha o formulário com os dados do ciclista
+3. Faça upload da foto de perfil
+4. Clique em "Cadastrar"
+5. A carteirinha será gerada automaticamente em PDF
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🤝 Como Contribuir
+
+1. Faça um Fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/NovaFuncionalidade`)
+3. Faça commit das suas alterações (`git commit -m 'feat: Adiciona nova funcionalidade'`)
+4. Faça push para a branch (`git push origin feature/NovaFuncionalidade`)
+5. Abra um Pull Request
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
